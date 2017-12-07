@@ -1,11 +1,6 @@
 import {Component} from '@angular/core';
 import {SocketConnectService} from "./service/socket-connect.service";
 
-interface IPacket {
-  data: any;
-  registTime: string;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +10,7 @@ export class AppComponent {
   socket: SocketConnectService;
   event_lists = [];
   thisTime = new Date();
+  packet: any;
 
   public constructor(private io: SocketConnectService) {
     this.socket = io;
@@ -29,5 +25,10 @@ export class AppComponent {
       console.log(data);
       console.log(this.event_lists);
     })
+  }
+
+  packet_send() {
+    this.socket.io.emit('send-packet', this.packet);
+    this.event_lists.push(this.packet + ' 을 전송하였습니다.');
   }
 }
