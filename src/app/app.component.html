@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let event_list of event_lists">
+    {{ thisTime | date:"yyyy-MM-dd hh:mm:ss" }}<br>
+    바인딩 된 데이터 -
+    <p><b>{{ event_list }}</b></p>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
