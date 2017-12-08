@@ -9,6 +9,7 @@ export class SocketConnectService {
 
   constructor() {
     this.io = SocketIo(this.WEB_SOCKET_URL);
+    console.log('Real-Time Networking');
   }
 
 }

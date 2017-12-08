@@ -14,18 +14,19 @@
         {{ packet }}
       </div>
       <a (click)="packet_send()" class="btn btn-primary">패킷 전송</a>
+      <a (click)="logEmpty()" class="btn btn-danger">로그 초기화</a>
     </div>
   </div>
   <hr>
   <h3>로그 리스트</h3>
   <hr>
-  <ul>
+  <ol>
     <li *ngFor="let event_list of event_lists">
-      {{ thisTime | date:"yyyy-MM-dd hh:mm:ss" }}<br>
+      {{ event_list.time | date:"yyyy-MM-dd hh:mm:ss" }}
       바인딩 된 데이터 -
-      <p><b>{{ event_list }}</b></p>
+      <b>{{ event_list.desc }}</b>
     </li>
-  </ul>
+  </ol>
 </div>
 
 <router-outlet></router-outlet>
