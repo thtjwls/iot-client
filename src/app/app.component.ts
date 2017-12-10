@@ -12,6 +12,7 @@ interface IEventList {
 })
 export class AppComponent {
   public socket: SocketConnectService;
+  public connect_count = { client: 0, device: 0 };
   public event_lists = [];
   public packet: any;
 
@@ -19,7 +20,15 @@ export class AppComponent {
     this.socket = io;
 
     this.eventBinder();
-    // this.packet_send();
+    this.getConnection();
+  }
+
+  public getConnection() {
+    this.socket.io.emit('get-connect-count');
+    this.socket.io.on('response-connect-count', (res) => {
+      this.connect_count.client = res.client;
+      this.connect_count.device = res.device;
+    })
   }
 
   public eventBinder() {
