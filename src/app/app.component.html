@@ -8,6 +8,22 @@
       </div>
     </div>
     <div class="col-md-12">
+      <div class="well">
+        <p class="text-primary">활성 된 클라이언트 ( 브라우저 )</p>
+        <ul>
+          <li *ngFor="let client of client_infos">
+            {{ client.id }} - {{ client.address }}
+          </li>
+        </ul>
+        <p class="text-primary">활성 된 디바이스</p>
+        <ul>
+          <li *ngFor="let device of device_infos">
+            ip : {{ device.ip }} - port : {{ device.port }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-12">
 	  <div class="alert alert-info" role="alert">
 		TCP 장비 연결시 HOST - 115.71.233.53, PORT - 9000 으로 설정 해주세요.
 	  </div>

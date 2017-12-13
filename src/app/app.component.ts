@@ -13,6 +13,9 @@ interface IEventList {
 export class AppComponent {
   public socket: SocketConnectService;
   public connect_count = { client: 0, device: 0 };
+  public device_infos = [];
+  public client_infos = [];
+  public sockets;
   public event_lists = [];
   public packet: any;
 
@@ -28,6 +31,8 @@ export class AppComponent {
     this.socket.io.on('response-connect-count', (res) => {
       this.connect_count.client = res.client;
       this.connect_count.device = res.device;
+      this.device_infos = res.device_info;
+      this.client_infos = res.client_info;
     })
   }
 
