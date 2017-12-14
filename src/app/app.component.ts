@@ -38,17 +38,18 @@ export class AppComponent {
 
   public eventBinder() {
     this.socket.io.on('receive-packet', (res) => {
-      this.event_lists.push({time: new Date(), desc: '서버로부터의 데이터 - ' + res});
+      console.log(res);
+      this.event_lists.unshift({time: new Date(), desc: '서버로부터의 데이터 - ' + res});
     });
 
     this.socket.io.on('send-packet-bind', (res) => {
-      this.event_lists.push({time: new Date(), desc: '서버로부터의 데이터 - ' + res});
+      this.event_lists.unshift({time: new Date(), desc: '서버로부터의 데이터 - ' + res});
     });
   }
 
   packet_send() {
     this.socket.io.emit('send-packet', this.packet);
-    this.event_lists.push({time: new Date(), desc: '보낸 데이터' + this.packet});
+    this.event_lists.unshift({time: new Date(), desc: '보낸 데이터' + this.packet});
     this.packet = '';
   }
 
