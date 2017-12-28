@@ -1,55 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="well">
-        활성된 연결 <br>
-        클라이언트 : {{ connect_count.client }}<br>
-        디바이스 : {{ connect_count.device }}
-      </div>
-    </div>
-    <div class="col-md-12">
-      <div class="well">
-        <p class="text-primary">활성 된 클라이언트 ( 브라우저 )</p>
-        <ul>
-          <li *ngFor="let client of client_infos">
-            {{ client.id }} - {{ client.address }}
-          </li>
-        </ul>
-        <p class="text-primary">활성 된 디바이스</p>
-        <ul>
-          <li *ngFor="let device of device_infos">
-            ip : {{ device.ip }} - port : {{ device.port }}
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-12">
-	  <div class="alert alert-info" role="alert">
-		TCP 장비 연결시 HOST - 115.71.233.53, PORT - 9000 으로 설정 해주세요.
-	  </div>
-      <div class="alert alert-info">
-        시험단계의 Client -> Device 간 필드입니다.
-      </div>
-      <div class="form-group">
-        <textarea rows="10" class="form-control" placeholder="장비로 보낼 패킷데이터를 작성 해주세요." [(ngModel)]="packet"></textarea>
-      </div>
-      <div class="well">
-        {{ packet }}
-      </div>
-      <a (click)="packet_send()" class="btn btn-primary">패킷 전송</a>
-      <a (click)="logEmpty()" class="btn btn-danger">로그 초기화</a>
-    </div>
-  </div>
-  <hr>
-  <h3>로그 리스트</h3>
-  <hr>
-  <ul>
-    <li *ngFor="let event_list of event_lists">
-      {{ event_list.time | date:"yyyy-MM-dd hh:mm:ss" }}
-      바인딩 된 데이터 -
-      <b>{{ event_list.desc }}</b>
-    </li>
-  </ul>
-</div>
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!-- LOGO -->
+    <span>
+      <a routerLink="/" class="toolbar-logo">DELTA-ON</a>
+    </span>
+    <!-- END LOGO -->
 
+    <!-- 툴바 Spacer -->
+    <span class="spacer"></span>
+
+    <!-- Right Toogle -->
+    <button mat-icon-button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/">로그</button>
+      <button mat-menu-item routerLink="/dashboard">대쉬보드</button>
+    </mat-menu>
+
+    <!-- Right Toogle -->
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<!-- END Toolbar -->
+<hr>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

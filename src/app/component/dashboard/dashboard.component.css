@@ -1,0 +1,7 @@
+mat-grid-tile {
+  background: lightblue;
+}
+
+
+mat-card { padding: 15px 20px; font-size: 24px; font-weight: bold; }
+.floor-btn { display: block; width: 100%; padding: 20px 16px; font-size: 24px; margin-bottom: 10px; }

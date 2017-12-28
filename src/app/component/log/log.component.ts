@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SocketConnectService} from "../../service/socket-connect.service";
+
 
 @Component({
   selector: 'app-log',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogComponent implements OnInit {
 
-  constructor() { }
+  public io;
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+  }
+
+  constructor( private socket: SocketConnectService ) {
+    this.io = socket;
   }
 
 }

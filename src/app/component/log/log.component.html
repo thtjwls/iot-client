@@ -1,3 +1,53 @@
-<p>
-  log works!
-</p>
+<div class="container bounce">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+        활성된 연결 <br>
+        클라이언트 : {{ io.connect_count.client }}<br>
+        디바이스 : {{ io.connect_count.device }}
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="well">
+        <p class="text-primary">활성 된 클라이언트 ( 브라우저 )</p>
+        <ul>
+          <li *ngFor="let client of io.client_infos">
+            {{ client.id }} - {{ client.address }}
+          </li>
+        </ul>
+        <p class="text-primary">활성 된 디바이스</p>
+        <ul>
+          <li *ngFor="let device of io.device_infos">
+            ip : {{ device.ip }} - port : {{ device.port }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="alert alert-info" role="alert">
+        TCP 장비 연결시 HOST - 115.71.233.53, PORT - 9000 으로 설정 해주세요.
+      </div>
+      <div class="alert alert-info">
+        시험단계의 Client -> Device 간 필드입니다.
+      </div>
+      <div class="form-group">
+        <textarea rows="10" class="form-control" placeholder="장비로 보낼 패킷데이터를 작성 해주세요." [(ngModel)]="io.packet"></textarea>
+      </div>
+      <div class="well">
+        {{ io.packet }}
+      </div>
+      <a (click)="io.packet_send()" class="btn btn-primary">패킷 전송</a>
+      <a (click)="io.logEmpty()" class="btn btn-danger">로그 초기화</a>
+    </div>
+  </div>
+  <hr>
+  <h3>로그 리스트</h3>
+  <hr>
+  <ul>
+    <li *ngFor="let event_list of io.event_lists">
+      {{ event_list.time | date:"yyyy-MM-dd hh:mm:ss" }}
+      바인딩 된 데이터 - <br>
+      <b>{{ event_list.desc }}</b>
+    </li>
+  </ul>
+</div>

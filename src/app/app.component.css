@@ -1,1 +1,17 @@
 .container { padding: 30px 0; }
+.spacer { flex: 1 1 auto; }
+
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+mat-drawer-container { height: 100%; }
+.toolbar-logo { text-decoration: none; color: #FFF; }
