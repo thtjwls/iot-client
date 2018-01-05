@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 interface IRoom {
@@ -29,7 +29,8 @@ interface IRoom {
 })
 export class RoomListComponent implements OnInit {
 
-  API_URL = 'http://127.0.0.1:8080/api/rooms';
+  API_URL = 'http://115.71.233.53:8080/api/rooms';
+  //API_URL = 'http://127.0.0.1:8080/api/rooms';
 
   rooms: IRoom[];
 

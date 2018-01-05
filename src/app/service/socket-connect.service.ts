@@ -8,6 +8,14 @@ interface IPacket {
 
 @Injectable()
 export class SocketConnectService {
+
+  config = {
+    LOCAL_API_ROOT: 'http://127.0.0.1:8080/api',
+    API_ROOT: 'http://115.71.233.53:8080/api',
+    LOCAL_SOCKET_ROOT: 'http://127.0.0.1:5000',
+    SOCKET_ROOT: 'http://115.71.233.53:5000'
+  }
+
   io: any;
   // WEB_SOCKET_URL = 'http://115.71.233.53:5000';
   WEB_SOCKET_URL = 'http://127.0.0.1:5000';
