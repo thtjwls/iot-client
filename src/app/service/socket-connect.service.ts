@@ -17,8 +17,8 @@ export class SocketConnectService {
   }
 
   io: any;
-  // WEB_SOCKET_URL = 'http://115.71.233.53:5000';
-  WEB_SOCKET_URL = 'http://127.0.0.1:5000';
+  WEB_SOCKET_URL = 'http://115.71.233.53:5000';
+  //WEB_SOCKET_URL = 'http://127.0.0.1:5000';
 
   actPacket: IPacket[];
 
@@ -30,7 +30,7 @@ export class SocketConnectService {
   test = 'test';
   packet: any;
 
-  API_URL:string = 'http://127.0.0.1:8080/api/packet/detail';
+  API_URL:string = 'http://115.71.233.53:8080/api/packet/detail';
   electric_amount: number;
 
   constructor() {
