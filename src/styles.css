@@ -8,3 +8,5 @@ router-outlet + * {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
+
+.cursor { cursor: pointer; }

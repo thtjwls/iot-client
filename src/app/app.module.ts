@@ -33,6 +33,11 @@ import {
 import { MenuComponent } from './component/menu/menu.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { FloorPipe } from './pipe/floor.pipe';
+import {AmountCardComponent} from './component/util/amount-card/amount-card.component';
+import {HttpClientModule} from '@angular/common/http';
+import { RoomListComponent } from './component/room-list/room-list.component';
+import { RoomDetailComponent } from './component/room-detail/room-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +45,18 @@ import { FooterComponent } from './component/footer/footer.component';
     LogComponent,
     MenuComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    FloorPipe,
+    AmountCardComponent,
+    RoomListComponent,
+    RoomDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
