@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -24,9 +24,6 @@ import {ActivatedRoute} from "@angular/router";
         </div>
       </div>
       <hr>
-      <mat-toolbar color="primary">
-        <span>현재 동작하지 않습니다!!</span>
-      </mat-toolbar>
       <div class="row">
         <div class="col-md-12">
           <button mat-raised-button color="primary" class="floor-btn">1층전등 ON</button>
@@ -48,6 +45,8 @@ import {ActivatedRoute} from "@angular/router";
   `]
 })
 export class RoomDetailComponent implements OnInit {
+
+  @Input() room_name: string;
 
   dcu_id: string;
   hcu_id: string;

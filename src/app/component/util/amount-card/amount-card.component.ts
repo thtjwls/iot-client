@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import * as io from 'socket.io-client';
-import {SocketConnectService} from "../../../service/socket-connect.service";
+import {Config} from "../../../config";
 
 interface IPacketDetail {
   dcu_id: string;
@@ -33,8 +33,9 @@ interface IPacketDetail {
 })
 export class AmountCardComponent implements OnInit {
 
-  API_URL: string = 'http://115.71.233.53:8080/api';
-  SOCKET_URL: string = 'http://115.71.233.53:5000';
+
+  API_URL     : string;
+  SOCKET_URL  : string;
 
   packetDetail: IPacketDetail;
   electric: string;
@@ -49,9 +50,12 @@ export class AmountCardComponent implements OnInit {
   @Input() hcu_id: string;
   @Input() dcu_id: string;
 
-  constructor( private http: HttpClient, private config: SocketConnectService ) {}
+  constructor( private http: HttpClient, private cf: Config ) {}
 
   ngOnInit() {
+    this.API_URL = this.cf.API_URL;
+    this.SOCKET_URL = this.cf.SOCKET_URL;
+
     this.API_URL = `${this.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}`;
 
     this.http.get<IPacketDetail>(this.API_URL)
@@ -69,7 +73,6 @@ export class AmountCardComponent implements OnInit {
    */
   amount_see() {
     this.socket.on('connect', () => {
-      console.log('connect');
       this.is_socket_send = true;
     })
 
@@ -78,6 +81,7 @@ export class AmountCardComponent implements OnInit {
 
       if ( res.dcu_id == this.dcu_id && res.hcu_id == this.hcu_id ) {
         this.packetDetail = res;
+        this.packet = this.packetDetail[this.showPacket];
       }
     });
 

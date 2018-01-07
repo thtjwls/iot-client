@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import * as SocketIo from 'socket.io-client';
+import {Config} from "../config";
 
 interface IPacket {
   type: string;
@@ -17,8 +18,7 @@ export class SocketConnectService {
   }
 
   io: any;
-  WEB_SOCKET_URL = 'http://115.71.233.53:5000';
-  //WEB_SOCKET_URL = 'http://127.0.0.1:5000';
+  WEB_SOCKET_URL = `${this.cf.SOCKET_URL}`;
 
   actPacket: IPacket[];
 
@@ -30,10 +30,10 @@ export class SocketConnectService {
   test = 'test';
   packet: any;
 
-  API_URL:string = 'http://115.71.233.53:8080/api/packet/detail';
+  API_URL:string = `${this.cf.API_URL}/packet/detail`;
   electric_amount: number;
 
-  constructor() {
+  constructor(private cf: Config) {
     this.io = SocketIo(this.WEB_SOCKET_URL);
     console.log('Real-Time Networking');
     this.eventBinder();
@@ -45,7 +45,6 @@ export class SocketConnectService {
   /* 초기화 했을때 만 사용하는 검침 데이터 */
   init_amount( type:string ) {
     this.API_URL += `${this.API_URL}${type}`;
-    console.log(this.API_URL);
   }
 
 

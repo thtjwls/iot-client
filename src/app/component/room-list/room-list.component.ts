@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Config} from "../../config";
 
 interface IRoom {
   room_group: string;
@@ -14,7 +15,7 @@ interface IRoom {
     <div class="container">
       <div class="row">
         <div class="col-md-4 cursor"
-            *ngFor=" let room of rooms" 
+            *ngFor="let room of rooms" 
             matTooltip="DCU_ID : {{ room.dcu_id }}, HCU_ID : {{ room.hcu_id }}"
             routerLink="/room/{{ room.dcu_id }}/id/{{ room.hcu_id }}">
           <mat-card>
@@ -25,18 +26,20 @@ interface IRoom {
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    mat-card { margin-bottom: 5px; }
+  `]
 })
 export class RoomListComponent implements OnInit {
 
-  API_URL = 'http://115.71.233.53:8080/api/rooms';
-  //API_URL = 'http://127.0.0.1:8080/api/rooms';
+  API_URL = this.cf.API_URL + '/rooms';
 
   rooms: IRoom[];
 
-  constructor( private http:HttpClient ) { }
+  constructor( private http:HttpClient, private cf: Config ) { }
 
   ngOnInit() {
+
     this.http.get<IRoom[]>(this.API_URL)
       .subscribe( r => {
         this.rooms = r;
