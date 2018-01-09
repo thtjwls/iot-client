@@ -24,12 +24,14 @@ interface IPacketDetail {
   template: `
     <h4 class="text-center">{{ title }}</h4>
     <mat-card class="text-right">
-      {{ packet }}
+      <h5>{{ packet }} {{ unit_type }}</h5>
       <mat-progress-bar mode="query" *ngIf="is_socket_send == true"></mat-progress-bar>
       <mat-progress-bar mode="buffer" *ngIf="is_socket_send == false"></mat-progress-bar>
     </mat-card>
   `,
-  styles: []
+  styles: [`
+    h5 { font-weight: bold; font-size: 18px; }
+  `]
 })
 export class AmountCardComponent implements OnInit {
 
@@ -49,6 +51,7 @@ export class AmountCardComponent implements OnInit {
   @Input() showPacket: string;
   @Input() hcu_id: string;
   @Input() dcu_id: string;
+  @Input() unit_type: string;
 
   constructor( private http: HttpClient, private cf: Config ) {}
 

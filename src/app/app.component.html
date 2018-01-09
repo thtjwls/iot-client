@@ -11,6 +11,14 @@
     <span class="spacer"></span>
 
     <!-- Right Toogle -->
+    <mat-chip-list>
+      <mat-chip color="primary" selected="true" *ngIf="device_socket_len > 0">
+        ON
+      </mat-chip>
+      <mat-chip color="warn" selected="true" *ngIf="device_socket_len == 0" matTooltip="장비의 연결 매개체가 없습니다. 장비 연결을 확인 해주세요.">
+        OFF
+      </mat-chip>
+    </mat-chip-list>
     <button mat-icon-button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
