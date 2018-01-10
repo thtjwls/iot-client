@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {Config} from "../../../config";
+import {MatDialog} from "@angular/material";
+import {DialogTemplateComponent} from "../../dialog-template/dialog-template.component";
 
 @Component({
   selector: 'az-floor',
@@ -18,7 +20,7 @@ export class FloorComponent implements OnInit {
   @Input() floor: number = 1;
   @Input() status: boolean = false;
 
-  constructor( private cf: Config ) { }
+  constructor( private cf: Config, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.io = socketIo(this.cf.SOCKET_URL);
@@ -30,6 +32,16 @@ export class FloorComponent implements OnInit {
     this.status = !this.status;
     let data = { floor: this.floor, status: this.status };
     this.io.emit(emitter, data);
+    this.dialogOpen();
+  }
+
+  dialogOpen() {
+    this.dialog.open(DialogTemplateComponent, {
+      disableClose: false
+    });
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
   }
 
 }
