@@ -53,6 +53,7 @@ export class AmountCardComponent implements OnInit {
   @Input() dcu_id: string;
   @Input() unit_type: string;
 
+
   constructor( private http: HttpClient, private cf: Config ) {}
 
   ngOnInit() {

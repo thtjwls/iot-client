@@ -15,7 +15,6 @@ import {
   MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule,
   MatToolbarModule, MatTooltipModule
 } from "@angular/material";
-import {MenuComponent} from './component/menu/menu.component';
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {FloorPipe} from './pipe/floor.pipe';
@@ -26,12 +25,12 @@ import {RoomDetailComponent} from './component/room-detail/room-detail.component
 import {Config} from "./config";
 import { FloorComponent } from './component/util/floor/floor.component';
 import { DialogTemplateComponent } from './component/dialog-template/dialog-template.component';
+import { MeterDashboardComponent } from './component/meter-dashboard/meter-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogComponent,
-    MenuComponent,
     DashboardComponent,
     FooterComponent,
     FloorPipe,
@@ -39,7 +38,8 @@ import { DialogTemplateComponent } from './component/dialog-template/dialog-temp
     RoomListComponent,
     RoomDetailComponent,
     FloorComponent,
-    DialogTemplateComponent
+    DialogTemplateComponent,
+    MeterDashboardComponent
   ],
   imports: [
     BrowserModule,

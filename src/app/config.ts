@@ -12,7 +12,8 @@ export class Config {
    * 소켓 IP address 와 포트 를 지정함.
    * @type {string}
    */
-  private SOCKET_ADDRESS      : string  = '115.71.233.53';
+  //private SOCKET_ADDRESS      : string  = '115.71.233.53';
+  private SOCKET_ADDRESS      : string  = '115.71.233.41';
   //private SOCKET_ADDRESS      : string  = '127.0.0.1';
   private SOCKET_PORT         : string  = '5000';
 
@@ -20,7 +21,8 @@ export class Config {
    * API 서버를 지정함.
    * @type {string}
    */
-  private API_ADDRESS         : string  = '115.71.233.53';
+  //private API_ADDRESS         : string  = '115.71.233.53';
+  private API_ADDRESS         : string  = '115.71.233.41';
   private API_PORT            : string  = '8080';
   private API_ROOT            : string  = '/api';
 
