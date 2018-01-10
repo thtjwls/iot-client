@@ -28,11 +28,11 @@ import {ActivatedRoute} from "@angular/router";
       <hr>
       <div class="row">
         <div class="col-md-12">
-          <button mat-raised-button color="{{ _1F | floor:'color' }}" class="floor-btn" (click)="_1F =! _1F">1층전등 {{ _1F | floor:'status' }}</button>
-          <button mat-raised-button color="{{ _2F | floor:'color' }}" class="floor-btn" (click)="_2F =! _2F">2층전등 {{ _2F | floor:'status' }}</button>
-          <button mat-raised-button color="{{ _3F | floor:'color' }}" class="floor-btn" (click)="_3F =! _3F">3층전등 {{ _3F | floor:'status' }}</button>
-          <button mat-raised-button color="{{ _4F | floor:'color' }}" class="floor-btn" (click)="_4F =! _4F">4층전등 {{ _4F | floor:'status' }}</button>
-          <button mat-raised-button color="{{ _5F | floor:'color' }}" class="floor-btn" (click)="_5F =! _5F">5층전등 {{ _5F | floor:'status' }}</button>
+          <az-floor [floor]="1"></az-floor>
+          <az-floor [floor]="2"></az-floor>
+          <az-floor [floor]="3"></az-floor>
+          <az-floor [floor]="4"></az-floor>
+          <az-floor [floor]="5"></az-floor>
         </div>
       </div>
     </div>
@@ -53,11 +53,6 @@ export class RoomDetailComponent implements OnInit {
   dcu_id: string;
   hcu_id: string;
 
-  _1F: boolean = false;
-  _2F: boolean = false;
-  _3F: boolean = false;
-  _4F: boolean = false;
-  _5F: boolean = false;
 
   constructor(
     private route: ActivatedRoute
@@ -67,6 +62,4 @@ export class RoomDetailComponent implements OnInit {
     this.dcu_id = this.route.snapshot.params.dcu_id;
     this.hcu_id = this.route.snapshot.params.hcu_id;
   }
-
-
 }

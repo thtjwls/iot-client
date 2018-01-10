@@ -25,8 +25,6 @@ export class FloorPipe implements PipeTransform {
       this.returnType = value ? this.on_status : this.off_status;
     }
 
-    console.log(this.returnType);
-
     return this.returnType;
   }
 

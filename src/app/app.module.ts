@@ -24,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RoomListComponent} from './component/room-list/room-list.component';
 import {RoomDetailComponent} from './component/room-detail/room-detail.component';
 import {Config} from "./config";
+import { FloorComponent } from './component/util/floor/floor.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {Config} from "./config";
     FloorPipe,
     AmountCardComponent,
     RoomListComponent,
-    RoomDetailComponent
+    RoomDetailComponent,
+    FloorComponent
   ],
   imports: [
     BrowserModule,
