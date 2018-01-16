@@ -71,7 +71,6 @@ export class AmountCardComponent implements OnInit {
 
   onData() {
     this.socket.on('hubToServerOnData', () => {
-      console.log('server on data event!');
       this.reloadData();
     });
   }
