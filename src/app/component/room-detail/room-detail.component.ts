@@ -6,7 +6,7 @@ import {ActivatedRoute} from "@angular/router";
   template: `
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-md-offset-2">
           <app-amount-card
             [title]="'현재전기 검침량'"
             [showPacket]="'electric'"
@@ -28,13 +28,10 @@ import {ActivatedRoute} from "@angular/router";
       <hr>
       <div class="row">
         <div class="col-md-12">
-          <az-floor [floor]="1"></az-floor>
-          <az-floor [floor]="2"></az-floor>
-          <az-floor [floor]="3"></az-floor>
-          <az-floor [floor]="4"></az-floor>
-          <az-floor [floor]="5"></az-floor>
+          <az-chart [dcu_id]="dcu_id" [hcu_id]="hcu_id"></az-chart>
         </div>
       </div>
+      
     </div>
   `,
   styles: [`

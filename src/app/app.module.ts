@@ -26,6 +26,9 @@ import {Config} from "./config";
 import { FloorComponent } from './component/util/floor/floor.component';
 import { DialogTemplateComponent } from './component/dialog-template/dialog-template.component';
 import { MeterDashboardComponent } from './component/meter-dashboard/meter-dashboard.component';
+import { ChartComponent } from './component/util/chart/chart.component';
+import {ChartService} from "./service/chart.service";
+import {ServerConnectionService} from "./service/server-connection.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { MeterDashboardComponent } from './component/meter-dashboard/meter-dashb
     RoomDetailComponent,
     FloorComponent,
     DialogTemplateComponent,
-    MeterDashboardComponent
+    MeterDashboardComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ import { MeterDashboardComponent } from './component/meter-dashboard/meter-dashb
   ],
   providers: [
     SocketConnectService,
-    Config
+    Config,
+    ChartService,
+    ServerConnectionService
   ],
   entryComponents: [
     DialogTemplateComponent

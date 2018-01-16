@@ -1,0 +1,20 @@
+{
+  "data": [
+    { "packet_time" : "2018-01-09 18:00:00", "electric": "811.91", "water": "15.21" },
+    { "packet_time" : "2018-01-09 17:00:00", "electric": "810.91", "water": "14.21" },
+    { "packet_time" : "2018-01-09 16:00:00", "electric": "809.91", "water": "13.21" },
+    { "packet_time" : "2018-01-09 15:00:00", "electric": "750.91", "water": "12.21" },
+    { "packet_time" : "2018-01-09 14:00:00", "electric": "711.91", "water": "11.21" },
+    { "packet_time" : "2018-01-09 13:00:00", "electric": "633.91", "water": "10.21" },
+    { "packet_time" : "2018-01-09 12:00:00", "electric": "622.91", "water": "9.21" },
+    { "packet_time" : "2018-01-09 11:00:00", "electric": "611.91", "water": "8.21" },
+    { "packet_time" : "2018-01-09 10:00:00", "electric": "533.91", "water": "7.21" },
+    { "packet_time" : "2018-01-09 09:00:00", "electric": "521.91", "water": "6.21" },
+    { "packet_time" : "2018-01-09 08:00:00", "electric": "411.91", "water": "5.21" }
+  ],
+  "info": {
+    "dcu_id": "0",
+    "hcu_id": "1",
+    "hub_id": "14"
+  }
+}

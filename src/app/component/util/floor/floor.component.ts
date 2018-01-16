@@ -1,3 +1,11 @@
+/**
+ * 현재 사용안함!! 이전버전과 호환을 위해 유지되고 있습니다 - DEV 팀 이지훈
+ * 현재 사용안함!! 이전버전과 호환을 위해 유지되고 있습니다 - DEV 팀 이지훈
+ * 현재 사용안함!! 이전버전과 호환을 위해 유지되고 있습니다 - DEV 팀 이지훈
+ * 현재 사용안함!! 이전버전과 호환을 위해 유지되고 있습니다 - DEV 팀 이지훈
+ * 현재 사용안함!! 이전버전과 호환을 위해 유지되고 있습니다 - DEV 팀 이지훈
+ */
+
 import {Component, Input, OnInit} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {Config} from "../../../config";

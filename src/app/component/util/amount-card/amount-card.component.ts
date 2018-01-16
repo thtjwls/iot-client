@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import * as io from 'socket.io-client';
-import {Config} from "../../../config";
+import {ServerConnectionService} from "../../../service/server-connection.service";
 
 interface IPacketDetail {
   dcu_id: string;
@@ -25,8 +24,8 @@ interface IPacketDetail {
     <h4 class="text-center">{{ title }}</h4>
     <mat-card class="text-right">
       <h5>{{ packet }} {{ unit_type }}</h5>
-      <mat-progress-bar mode="query" *ngIf="is_socket_send == true"></mat-progress-bar>
-      <mat-progress-bar mode="buffer" *ngIf="is_socket_send == false"></mat-progress-bar>
+      <mat-progress-bar mode="query" *ngIf="sc.is_socket_connect == true"></mat-progress-bar>
+      <mat-progress-bar mode="buffer" *ngIf="sc.is_socket_connect == false"></mat-progress-bar>
     </mat-card>
   `,
   styles: [`
@@ -45,7 +44,7 @@ export class AmountCardComponent implements OnInit {
 
   socket: any; // socket Control object
 
-  is_socket_send: boolean = false;
+  is_socket_connect: boolean = false;
 
   @Input() title: string;
   @Input() showPacket: string;
@@ -54,13 +53,10 @@ export class AmountCardComponent implements OnInit {
   @Input() unit_type: string;
 
 
-  constructor( private http: HttpClient, private cf: Config ) {}
+  constructor( private http: HttpClient, public sc: ServerConnectionService) {}
 
   ngOnInit() {
-    this.API_URL = this.cf.API_URL;
-    this.SOCKET_URL = this.cf.SOCKET_URL;
-
-    this.API_URL = `${this.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}`;
+    this.API_URL = `${this.sc.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}`;
 
     this.http.get<IPacketDetail>(this.API_URL)
       .subscribe( res => {
@@ -68,30 +64,24 @@ export class AmountCardComponent implements OnInit {
         this.packet = this.packetDetail[this.showPacket];
       });
 
-    this.socket = io(this.SOCKET_URL);
-    this.amount_see();
+    this.socket = this.sc.io;
+    this.reloadData();
+    this.onData();
   }
 
-  /**
-   * 실시간으로 소켓의 변경값을 구성함
-   */
-  amount_see() {
-    this.socket.on('connect', () => {
-      this.is_socket_send = true;
-    })
+  onData() {
+    this.socket.on('hubToServerOnData', () => {
+      console.log('server on data event!');
+      this.reloadData();
+    });
+  }
 
-    this.socket.on('receive-packet', (data) => {
-      let res = JSON.parse(data);
-
-      if ( res.dcu_id == this.dcu_id && res.hcu_id == this.hcu_id ) {
+  reloadData() {
+    this.http.get<IPacketDetail>(this.API_URL)
+      .subscribe( res => {
         this.packetDetail = res;
         this.packet = this.packetDetail[this.showPacket];
-      }
-    });
-
-    this.socket.on('disconnect', () => {
-      this.is_socket_send = false;
-    });
+      });
   }
 
 }

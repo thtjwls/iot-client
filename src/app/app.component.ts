@@ -1,7 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {SocketConnectService} from "./service/socket-connect.service";
-import * as socketIo from 'socket.io-client';
-import {Config} from "./config";
+import {Component, OnInit} from '@angular/core';
+import {ServerConnectionService} from "./service/server-connection.service";
 
 @Component({
   selector: 'app-root',
@@ -10,18 +8,17 @@ import {Config} from "./config";
 })
 export class AppComponent implements OnInit{
 
-  SOCKET_SERVER: string = `${this.cf.SOCKET_URL}`
   socket: any;
 
   device_socket_len = 0;
 
-  public constructor( private cf: Config ) {
-    this.socket = socketIo(this.SOCKET_SERVER);
+  constructor( private connectionService: ServerConnectionService) {
+    this.socket = connectionService.io;
   }
 
   ngOnInit(): void {
-    this.socket.on('response-connect-count', (data) => {
-      this.device_socket_len = data.device_info.length;
+    this.socket.on('getTcpConnections', (data) => {
+      this.device_socket_len = data;
     });
   }
 
