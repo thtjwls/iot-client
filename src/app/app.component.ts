@@ -18,6 +18,12 @@ import {ServerConnectionService} from "./service/server-connection.service";
 
         <!-- Right Toggle -->
         <mat-chip-list>
+          <mat-chip color="primary" selected="true">
+            {{ today }}
+          </mat-chip>
+        </mat-chip-list>
+        
+        <mat-chip-list>
           <mat-chip color="primary" selected="true" *ngIf="device_socket_len > 0">
             ON
           </mat-chip>
@@ -25,9 +31,6 @@ import {ServerConnectionService} from "./service/server-connection.service";
             OFF
           </mat-chip>
         </mat-chip-list>
-        <button mat-icon-button mat-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
 
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/">리스트</button>
@@ -53,8 +56,14 @@ export class AppComponent implements OnInit{
 
   device_socket_len = 0;
 
+  today: string = new Date().toLocaleDateString("ko", {hour: "2-digit", minute: "2-digit", second: "2-digit"});
+
   constructor( private connectionService: ServerConnectionService) {
     this.socket = connectionService.io;
+
+
+
+    //setInterval(this.currentToday, 1000);
   }
 
   ngOnInit(): void {
@@ -62,6 +71,17 @@ export class AppComponent implements OnInit{
       console.log(data);
       this.device_socket_len = data;
     });
+
+    this.currentToday();
+  }
+
+  currentToday() {
+    setInterval(() => {
+      this.today = new Date()
+        .toLocaleDateString("ko", {
+          hour: "2-digit", minute: "2-digit", second: "2-digit"
+        });
+    }, 1000);
   }
 
 }

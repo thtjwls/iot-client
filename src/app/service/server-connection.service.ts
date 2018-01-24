@@ -4,13 +4,15 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class ServerConnectionService {
 
-  SOCKET_URL: string = 'http://115.71.233.41:5000';
-  API_URL:string = 'http://115.71.233.41:8080/api';
+  // url: string = '115.71.233.41';
+  //SOCKET_URL = 'http://115.71.233.41:5000';
+  SOCKET_URL = 'http://127.0.0.1:5000';
+  API_URL = 'http://127.0.0.1:8080/api';
 
 
   io: any;
 
-  is_socket_connect: boolean = false;
+  is_socket_connect = false;
 
   constructor() {
     this.io = io(this.SOCKET_URL);

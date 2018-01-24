@@ -17,7 +17,7 @@ interface IRooms {
         <div class="col-md-12">
           <h4>전기 = kWh / 수도 = ㎡</h4>
         </div>
-        <div class="col-md-4 card-wrapper" *ngFor="let room of rooms">
+        <div class="col-md-4 card-wrapper" *ngFor="let room of rooms" routerLink="/room/{{ room.dcu_id }}/id/{{ room.hcu_id }}">
           <mat-card>
             <mat-card-title class="text-center">{{ room.room_group }} 동 {{ room.room_id }}호</mat-card-title>
             <hr>
@@ -50,7 +50,8 @@ interface IRooms {
     </div>
   `,
   styles: [`
-     .card-wrapper { margin-bottom: 20px; }
+     .card-wrapper { margin-bottom: 20px; cursor: pointer; padding: 10px; }
+     .card-wrapper:hover { background-color: antiquewhite; }
   `]
 })
 export class MeterDashboardComponent implements OnInit {

@@ -1,7 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html { overflow-y: scroll; }
 html, body { height: 100%; }
-.container{ height: 100%; }
+.container{ }
 app-root { height: 100%; }
 router-outlet + * {
   -webkit-box-flex: 1;

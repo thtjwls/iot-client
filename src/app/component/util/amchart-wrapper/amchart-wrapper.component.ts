@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import 'rxjs/add/operator/map';
+import {AmChartsService, AmChart} from "@amcharts/amcharts3-angular";
 import {ServerConnectionService} from "../../../service/server-connection.service";
 import {HttpClient} from "@angular/common/http";
-import {AmChart, AmChartsService} from '@amcharts/amcharts3-angular';
 
 interface IPacket {
   name: string;
@@ -22,8 +21,8 @@ interface IPacket {
 }
 
 @Component({
-  selector: 'az-chart',
-  template: `
+  selector: 'az-amchart-wrapper',
+  template: `    
     <a (click)="generateChartData()" class="btn btn-primary">test</a>
     <div class="row">
       <div class="col-md-12">
@@ -31,30 +30,28 @@ interface IPacket {
       </div>
     </div>
   `,
-  styles: [`
-    .dateTypeRadio { margin: 0 5px; }
-  `],
-  providers: [
-
-  ]
+  styles: []
 })
-export class ChartComponent implements OnInit {
+export class AmchartWrapperComponent implements OnInit {
+
+  private chart: AmChart;
+  private chartData: any;
 
   @Input() hcu_id: string;
   @Input() dcu_id: string;
 
-  private chart: AmChart;
-  private chartData: any;
-  private io: any;
-  private httpRequest: any;
+  io: any;
 
+  httpRequest: any;
 
-  constructor(private AmCharts: AmChartsService, private connect: ServerConnectionService, private _http: HttpClient) {
+  packets: IPacket;
+
+  constructor( private AmCharts: AmChartsService, private connect: ServerConnectionService, private _http: HttpClient) {
+    this.io = connect.io;
+    this.httpRequest = _http.get(`${this.connect.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}/last`);
   }
 
   ngOnInit() {
-    this.io = this.connect.io;
-    this.httpRequest = this._http.get(`${this.connect.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}/last`);
 
     this.chart = this.AmCharts.makeChart('chartDiv', {
       'type' : 'serial',
@@ -189,7 +186,7 @@ export class ChartComponent implements OnInit {
           "ext4": null,
           "packet_time": "2018-01-17 00:02:42.0"
         }
-      ], // Chart GenerateChartData()
+        ], // Chart GenerateChartData()
       'valueAxes': [{
         'position': 'left',
         'title' : '차트 타이틀'
@@ -217,4 +214,5 @@ export class ChartComponent implements OnInit {
       console.log(res);
     });
   }
+
 }

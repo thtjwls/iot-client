@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Config} from "../../config";
+import {ServerConnectionService} from "../../service/server-connection.service";
 
 interface IRoom {
   room_group: string;
@@ -36,7 +36,7 @@ export class RoomListComponent implements OnInit {
 
   rooms: IRoom[];
 
-  constructor( private http:HttpClient, private cf: Config ) { }
+  constructor( private http:HttpClient, private cf: ServerConnectionService ) { }
 
   ngOnInit() {
 

@@ -8,12 +8,37 @@ import {LogComponent} from './component/log/log.component';
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
-  MatDatepickerModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule,
-  MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule,
-  MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule,
-  MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule,
-  MatToolbarModule, MatTooltipModule
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from "@angular/material";
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {FooterComponent} from './component/footer/footer.component';
@@ -23,12 +48,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {RoomListComponent} from './component/room-list/room-list.component';
 import {RoomDetailComponent} from './component/room-detail/room-detail.component';
 import {Config} from "./config";
-import { FloorComponent } from './component/util/floor/floor.component';
-import { DialogTemplateComponent } from './component/dialog-template/dialog-template.component';
-import { MeterDashboardComponent } from './component/meter-dashboard/meter-dashboard.component';
-import { ChartComponent } from './component/util/chart/chart.component';
+import {FloorComponent} from './component/util/floor/floor.component';
+import {DialogTemplateComponent} from './component/dialog-template/dialog-template.component';
+import {MeterDashboardComponent} from './component/meter-dashboard/meter-dashboard.component';
+import {ChartComponent} from './component/util/chart/chart.component';
 import {ChartService} from "./service/chart.service";
 import {ServerConnectionService} from "./service/server-connection.service";
+import {MzDatepickerModule, MzTimepickerModule} from "ng2-materialize";
+import {AmChartsModule} from "@amcharts/amcharts3-angular";
+import { AmchartWrapperComponent } from './component/util/amchart-wrapper/amchart-wrapper.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +72,8 @@ import {ServerConnectionService} from "./service/server-connection.service";
     FloorComponent,
     DialogTemplateComponent,
     MeterDashboardComponent,
-    ChartComponent
+    ChartComponent,
+    AmchartWrapperComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +111,10 @@ import {ServerConnectionService} from "./service/server-connection.service";
     MatTableModule,
     MatToolbarModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MzDatepickerModule,
+    MzTimepickerModule,
+    AmChartsModule
   ],
   providers: [
     SocketConnectService,
