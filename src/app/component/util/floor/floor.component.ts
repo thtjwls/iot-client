@@ -8,13 +8,13 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import * as socketIo from 'socket.io-client';
-import {Config} from "../../../config";
-import {MatDialog} from "@angular/material";
-import {DialogTemplateComponent} from "../../dialog-template/dialog-template.component";
+import {Config} from '../../../config';
+import {MatDialog} from '@angular/material';
+import {DialogTemplateComponent} from '../../dialog-template/dialog-template.component';
 
 @Component({
   selector: 'az-floor',
-  template: `    
+  template: `
     <button mat-raised-button color="{{ status | floor:'color' }}" class="floor-btn" (click)="floorControl()">{{ floor }}층전등 {{ status | floor:'status' }}</button>
   `,
   styles: [`
@@ -25,8 +25,8 @@ export class FloorComponent implements OnInit {
 
   io: any;
 
-  @Input() floor: number = 1;
-  @Input() status: boolean = false;
+  @Input() floor = 1;
+  @Input() status = false;
 
   constructor( private cf: Config, private dialog: MatDialog) { }
 
@@ -35,10 +35,10 @@ export class FloorComponent implements OnInit {
   }
 
   floorControl() {
-    let control = this.status ? 'off' : 'on';
-    let emitter = `floor-${control}`;
+    const control = this.status ? 'off' : 'on';
+    const emitter = `floor-${control}`;
     this.status = !this.status;
-    let data = { floor: this.floor, status: this.status };
+    const data = { floor: this.floor, status: this.status };
     this.io.emit(emitter, data);
     this.dialogOpen();
   }

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ServerConnectionService} from "../../../service/server-connection.service";
+import {ServerConnectionService} from '../../../service/server-connection.service';
+import {MatDialog} from '@angular/material';
+import {DialogTemplateComponent} from '../../dialog-template/dialog-template.component';
 
 interface IPacketDetail {
   dcu_id: string;
@@ -29,14 +31,15 @@ interface IPacketDetail {
     </mat-card>
   `,
   styles: [`
+    h4 { font-size: 18px; }
     h5 { font-weight: bold; font-size: 18px; }
   `]
 })
 export class AmountCardComponent implements OnInit {
 
 
-  API_URL     : string;
-  SOCKET_URL  : string;
+  API_URL: string;
+  SOCKET_URL: string;
 
   packetDetail: IPacketDetail;
   electric: string;
@@ -44,7 +47,7 @@ export class AmountCardComponent implements OnInit {
 
   socket: any; // socket Control object
 
-  is_socket_connect: boolean = false;
+  is_socket_connect = false;
 
   @Input() title: string;
   @Input() showPacket: string;
@@ -53,7 +56,7 @@ export class AmountCardComponent implements OnInit {
   @Input() unit_type: string;
 
 
-  constructor( private http: HttpClient, public sc: ServerConnectionService) {}
+  constructor( private http: HttpClient, public sc: ServerConnectionService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.API_URL = `${this.sc.API_URL}/packet/dcu_id/${this.dcu_id}/hcu_id/${this.hcu_id}`;
@@ -65,7 +68,8 @@ export class AmountCardComponent implements OnInit {
       });
 
     this.socket = this.sc.io;
-    this.reloadData();
+    /* this.reloadData();*/
+    this.reloadDataTest();
     this.onData();
   }
 
@@ -81,6 +85,29 @@ export class AmountCardComponent implements OnInit {
         this.packetDetail = res;
         this.packet = this.packetDetail[this.showPacket];
       });
+  }
+
+  reloadDataTest() {
+    /**
+     * Ajax 로딩 시작 때 ...
+     * TODO...
+     */
+
+    this.http.get<IPacketDetail>(this.API_URL).subscribe(
+      (res) => {
+        this.packetDetail = res;
+        this.packet = this.packetDetail[this.showPacket];
+      },
+      (err) => {
+
+      },
+      () => {
+        /**
+         * Ajax 로딩 종료
+         * TODO...
+         */
+      }
+    );
   }
 
 }

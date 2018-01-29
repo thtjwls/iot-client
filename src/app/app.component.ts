@@ -31,6 +31,9 @@ import {ServerConnectionService} from "./service/server-connection.service";
             OFF
           </mat-chip>
         </mat-chip-list>
+        <button mat-icon-button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
 
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/">리스트</button>

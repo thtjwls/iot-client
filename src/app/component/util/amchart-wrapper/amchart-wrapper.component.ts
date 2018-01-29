@@ -23,7 +23,7 @@ interface IPacket {
 @Component({
   selector: 'az-amchart-wrapper',
   template: `    
-    <a (click)="generateChartData()" class="btn btn-primary">test</a>
+    <a (click)="generateChartData()" class="btn btn-primary">tzest</a>
     <div class="row">
       <div class="col-md-12">
         <div id="chartDiv" [style.width.%]="100" [style.height.px]="400"></div>
@@ -57,136 +57,7 @@ export class AmchartWrapperComponent implements OnInit {
       'type' : 'serial',
       'theme' : 'light',
       'marginRight': 80,
-      'dataProvider': [
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-24 00:06:22.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-23 00:01:02.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-22 00:06:56.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-21 00:01:55.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-20 00:07:14.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-19 00:02:11.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-18 00:07:28.0"
-        },
-        {
-          "name": "omni",
-          "len": 31,
-          "header": null,
-          "hub_version": "1",
-          "hub_id": "14",
-          "hcu_id": "1",
-          "dcu_id": "1",
-          "electric": "0",
-          "water": "0.03",
-          "ext1": "0:0:0:0",
-          "ext2": null,
-          "ext3": null,
-          "ext4": null,
-          "packet_time": "2018-01-17 00:02:42.0"
-        }
-        ], // Chart GenerateChartData()
+      'dataProvider': [], // Chart GenerateChartData()
       'valueAxes': [{
         'position': 'left',
         'title' : '차트 타이틀'
