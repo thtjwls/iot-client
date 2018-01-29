@@ -7,7 +7,8 @@ export class ServerConnectionService {
   // url: string = '115.71.233.41';
   SOCKET_URL = 'http://115.71.233.41:5000';
   //SOCKET_URL = 'http://127.0.0.1:5000';
-  API_URL = 'http://127.0.0.1:8080/api';
+  //API_URL = 'http://127.0.0.1:8080/api';
+  API_URL = 'http://115.71.233.41:8080/api';
 
 
   io: any;
